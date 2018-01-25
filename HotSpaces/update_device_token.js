@@ -4,23 +4,23 @@ exports.handler = function (event, context, callback) {
 	console.log(event);
 	ddb.put({
 		TableName: 'hs_device_tokens',
-		Item: { 
-			'username': JSON.parse(event.body).username, 
-			'token': JSON.parse(event.body).token
-			 }
-	}, function (err, data) {
+		Item: {
+			'username': JSON.parse(event.body).username},
+			'device_token': JSON.parse(event.body).token
+		}
+	, function (err, data) {
 		if (err) {
-			 callback(err, null);
+			callback(err, null);
 		} else {
-			 let response = {
-        "statusCode": 200,
-        "headers": {
-            "my_header": "my_value"
-        },
-        "body": JSON.stringify(data),
-        "isBase64Encoded": false
-    };
-           callback(null, response);
+			let response = {
+				"statusCode": 200,
+				"headers": {
+					"my_header": "my_value"
+				},
+				"body": JSON.stringify(data),
+				"isBase64Encoded": false
+			};
+			callback(null, response);
 		}
 	});
 
