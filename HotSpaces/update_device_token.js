@@ -8,7 +8,7 @@ exports.handler = function (event, context, callback) {
 			'username': event.username,
 			'device_token': event.token
 		}
-	, function (err, data) {
+	}, function (err, data) {
 		if (err) {
 			callback(err, null);
 		} else {
