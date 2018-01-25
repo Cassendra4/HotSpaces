@@ -3,6 +3,7 @@ const ddb = new AWS.DynamoDB.DocumentClient();
 exports.handler = function (event, context, callback) {
 	console.log(event);
 	console.log(event.username);
+	console.log(JSON.parse(event.username));
 	ddb.put({
 		TableName: 'hs_device_tokens',
 		Item: {
