@@ -1,7 +1,8 @@
 let AWS = require('aws-sdk');
 const ddb = new AWS.DynamoDB.DocumentClient();
 exports.handler = function (event, context, callback) {
-	console.log(event.body);
+	console.log(event);
+	console.log(JSON.parse(event));
 	ddb.put({
 		TableName: 'hs_device_tokens',
 		Item: {
