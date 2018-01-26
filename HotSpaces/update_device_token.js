@@ -7,10 +7,10 @@ exports.handler = function (event, context, callback) {
 	ddb.put({
 		TableName: 'device_token',
 		Item: {
-			'username': JSON.parse(event.body).username},
+			'username': JSON.parse(event.body).username,
 			'device_token': JSON.parse(event.body).token
 		}
-	, function (err, data) {
+	}, function (err, data) {
 		if (err) {
 			callback(err, null);
 		} else {
