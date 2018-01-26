@@ -8,7 +8,7 @@ exports.handler = function (event, context, callback) {
 		TableName: 'device_token',
 		Item: {
 			'username': JSON.parse(event.body).username,
-			'device_token': JSON.parse(event.body).token
+			'token': JSON.parse(event.body).token
 		}
 	}, function (err, data) {
 		if (err) {
