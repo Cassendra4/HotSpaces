@@ -7,8 +7,8 @@ exports.handler = function (event, context, callback) {
 	ddb.put({
 		TableName: 'hs_device_tokens',
 		Item: {
-			'username': event.username,
-			'device_token': event.token
+			'username': event.body.username,
+			'device_token': event.body.token
 		}
 	}, function (err, data) {
 		if (err) {
