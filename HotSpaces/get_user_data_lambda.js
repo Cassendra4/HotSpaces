@@ -1,6 +1,10 @@
 let AWS = require('aws-sdk');
 const ddb = new AWS.DynamoDB.DocumentClient();
 exports.handler = function (event, context, callback) {
+	console.log(event);
+	console.log(event.queryStringParameters);
+	console.log(JSON.parse(event.queryStringParameters).username);
+	console.log(event.queryStringParameters.username);
 	ddb.get({
 		TableName: 'hs_user',
 		Key: { 'username': event.queryStringParameters.username }
