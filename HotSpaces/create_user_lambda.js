@@ -1,13 +1,13 @@
 let AWS = require('aws-sdk');
 const ddb = new AWS.DynamoDB.DocumentClient();
 exports.handler = function (event, context, callback) {
-	
+
 	ddb.put({
 		TableName: 'hs_user',
 		Item: {
 			'username': JSON.parse(event.body).username,
 			'email': JSON.parse(event.body).email,
-			'first_name':JSON.parse(event.body).first_name,
+			'first_name': JSON.parse(event.body).first_name,
 			'last_name': JSON.parse(event.body).last_name,
 			'age': JSON.parse(event.body).age,
 			'gender': JSON.parse(event.body).gender,
@@ -20,31 +20,20 @@ exports.handler = function (event, context, callback) {
 		if (err) {
 			callback(err, null);
 		} else {
-			let response = {
-				"statusCode": 200,
-				"headers": {
-					"my_header": "my_value"
-				},
-				"body": JSON.stringify(data),
-				"isBase64Encoded": false
-			};
-			callback(null, response);
-		}
-	});
-	ddb.put({
-		TableName: 'hs_sort_table',
-		Item: {
+			ddb.put({
+				TableName: 'hs_sort_table',
+				Item: {
 			'gender': JSON.parse(event.body).gender,
 			'last_updated_timestamp': JSON.parse(event.body).last_updated_timestamp,
 			'last_known_lat': JSON.parse(event.body).last_known_lat,
 			'last_known_long': JSON.parse(event.body).last_known_long,
 			'username': JSON.parse(event.body).username
-		}
-	}, function (err, data) {
-		if (err) {
-			callback(err, null);
-		} else {
-			let response = {
+				}
+			}, function (err, data) {
+				if (err) {
+					callback(err, null);
+				} else {
+					let response = {
 				"statusCode": 200,
 				"headers": {
 					"my_header": "my_value"
@@ -53,8 +42,10 @@ exports.handler = function (event, context, callback) {
 				"isBase64Encoded": false
 			};
 			callback(null, response);
+				}
+			});
+
 		}
 	});
-
 
 }
