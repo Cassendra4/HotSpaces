@@ -20,15 +20,16 @@ exports.handler = function (event, context, callback) {
 		if (err) {
 			callback(err, null);
 		} else {
+
 			ddb.put({
 				TableName: 'hs_sort_table',
-				Item: {
-					'gender': JSON.parse(event.body).gender,
-					'last_updated_timestamp': JSON.parse(event.body).last_updated_timestamp,
-					'last_known_lat': JSON.parse(event.body).last_known_lat,
-					'last_known_long': JSON.parse(event.body).last_known_long,
-					'username': JSON.parse(event.body).username
-				}
+				Item: { 
+				'gender': JSON.parse(event.body).gender, 
+				'username': JSON.parse(event.body).username, 
+				'last_known_lat': JSON.parse(event.body).last_known_lat, 
+				'last_updated_timestamp': JSON.parse(event.body).last_updated_timestamp, 
+				'last_known_long': JSON.parse(event.body).last_known_long
+				 }
 			}, function (err, data) {
 				if (err) {
 					callback(err, null);
@@ -44,6 +45,7 @@ exports.handler = function (event, context, callback) {
 					callback(null, response);
 				}
 			});
+
 		}
 	});
 
