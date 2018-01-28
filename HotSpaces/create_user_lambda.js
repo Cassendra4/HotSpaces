@@ -27,7 +27,7 @@ exports.handler = function (event, context, callback) {
 					'last_updated_timestamp': JSON.parse(event.body).last_updated_timestamp,
 					'last_known_lat': JSON.parse(event.body).last_known_lat,
 					'last_known_long': JSON.parse(event.body).last_known_long,
-					'username': JSON.parse(event.body).username}
+					'username': JSON.parse(event.body).username
 				}
 			}, function (err, data) {
 				if (err) {
