@@ -3,7 +3,7 @@ const ddb = new AWS.DynamoDB.DocumentClient();
 exports.handler = function (event, context, callback) {
 	console.log(event);
 	console.log(event.body);
-	console.log(event.username);
+	console.log(event.body.username);
 	ddb.put({
 		TableName: 'hs_user',
 		Item: {
