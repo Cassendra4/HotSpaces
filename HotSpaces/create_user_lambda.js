@@ -23,28 +23,27 @@ exports.handler = function (event, context, callback) {
 			ddb.put({
 				TableName: 'hs_sort_table',
 				Item: {
-			'gender': JSON.parse(event.body).gender,
-			'last_updated_timestamp': JSON.parse(event.body).last_updated_timestamp,
-			'last_known_lat': JSON.parse(event.body).last_known_lat,
-			'last_known_long': JSON.parse(event.body).last_known_long,
-			'username': JSON.parse(event.body).username
+					'gender': JSON.parse(event.body).gender,
+					'last_updated_timestamp': JSON.parse(event.body).last_updated_timestamp,
+					'last_known_lat': JSON.parse(event.body).last_known_lat,
+					'last_known_long': JSON.parse(event.body).last_known_long,
+					'username': JSON.parse(event.body).username}
 				}
 			}, function (err, data) {
 				if (err) {
 					callback(err, null);
 				} else {
 					let response = {
-				"statusCode": 200,
-				"headers": {
-					"my_header": "my_value"
-				},
-				"body": JSON.stringify(data),
-				"isBase64Encoded": false
-			};
-			callback(null, response);
+						"statusCode": 200,
+						"headers": {
+							"my_header": "my_value"
+						},
+						"body": JSON.stringify(data),
+						"isBase64Encoded": false
+					};
+					callback(null, response);
 				}
 			});
-
 		}
 	});
 
