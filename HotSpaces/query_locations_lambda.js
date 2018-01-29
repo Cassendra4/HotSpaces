@@ -1,7 +1,20 @@
 let AWS = require('aws-sdk');
 const ddb = new AWS.DynamoDB.DocumentClient();
 exports.handler = function (event, context, callback) {
+  var currentTimestamp = new Date();
+    var yesterdayTimestamp = new Date();
+    yesterdayTimestamp.setTime(currentTimestamp.getTime() - 86400000);
 
+    var  dbParams;
+    
+    if (parseInt(event.queryStringParameters.gender) != 2) {
+        
+        
+        
+          } else {
+
+
+    }
 
 
 }
