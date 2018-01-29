@@ -1,7 +1,7 @@
 let AWS = require('aws-sdk');
 const ddb = new AWS.DynamoDB.DocumentClient();
 exports.handler = function (event, context, callback) {
-
+ var currentTimestamp = new Date();
 	ddb.put({
 		TableName: 'hs_user',
 		Item: {
@@ -27,7 +27,7 @@ exports.handler = function (event, context, callback) {
 				'gender': JSON.parse(event.body).gender, 
 				'username': JSON.parse(event.body).username, 
 				'last_known_lat': JSON.parse(event.body).last_known_lat, 
-				'last_updated_timestamp': String(new Date()), 
+				'last_updated_timestamp':  currentTimestamp.toLocaleString(), 
 				'last_known_long': JSON.parse(event.body).last_known_long
 				 }
 			}, function (err, data) {
