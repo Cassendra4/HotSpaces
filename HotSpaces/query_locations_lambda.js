@@ -5,7 +5,7 @@ exports.handler = function (event, context, callback) {
     var yesterdayTimestamp = new Date();
     yesterdayTimestamp.setTime(currentTimestamp.getTime() - 86400000);
 
-    var  dbParams;
+    let dbParams;
     
     if (parseInt(event.queryStringParameters.gender) != 2) {
         

@@ -35,11 +35,11 @@ exports.handler = function (event, context, callback) {
 					callback(err, null);
 				} else {
 					
-					 data.Items.forEach(function(item) {
+					data.Items.forEach(function(item) {
                
 
 
-					 }
+					 });
 
 				}
 			});
