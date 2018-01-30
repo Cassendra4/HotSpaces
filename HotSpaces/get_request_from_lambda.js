@@ -17,8 +17,11 @@ exports.handler = function (event, context, callback) {
 	}
 	ddb.query({
 		TableName: 'hs_device_tokens',
-		ExpressionAttributeValues: { ':username': event.queryStringParameters.match_username },
-		KeyConditionExpression: 'username = :username'
+		ExpressionAttributeValues: {
+			':username': event.queryStringParameters.match_username
+		},
+		KeyConditionExpression: 'username = :username',
+		FilterExpression: 'undefined'
 	}, function (err, data) {
 		if (err) {
 			callback(err, null);

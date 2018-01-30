@@ -4,11 +4,13 @@ exports.handler = function (event, context, callback) {
 	console.log(event);
 	console.log(event.body);
 	console.log(JSON.parse(event.body).username);
+	var username = JSON.parse(event.body).username
+	var token = JSON.parse(event.body).token
 	ddb.put({
 		TableName: 'hs_device_tokens',
 		Item: {
-			'username': JSON.parse(event.body).username,
-			'device_token': JSON.parse(event.body).token
+			'username': username,
+			'device_token': token
 		}
 	}, function (err, data) {
 		if (err) {
