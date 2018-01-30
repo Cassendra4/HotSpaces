@@ -18,7 +18,7 @@ exports.handler = function (event, context, callback) {
         "headers": {
             "my_header": "my_value"
         },
-        "body": JSON.stringify(data),
+        "body": JSON.stringify(filePath),
         "isBase64Encoded": false
     };
            callback(null, response);
