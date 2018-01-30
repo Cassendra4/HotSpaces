@@ -43,23 +43,23 @@ exports.handler = function (event, context, callback) {
 							TargetArn: endPointData
 						}).promise()
 							.then(data => {
-								 callback(err, null);
+								callback(err, null);
 							})
 							.catch(err => {
 								let response = {
-				"statusCode": 200,
-				"headers": {
-					"my_header": "my_value"
-				},
-				"body": JSON.stringify(data),
-				"isBase64Encoded": false
-			};
-			callback(null, response);
+									"statusCode": 200,
+									"headers": {
+										"my_header": "my_value"
+									},
+									"body": JSON.stringify(data),
+									"isBase64Encoded": false
+								};
+								callback(null, response);
 							});
 					});
 
 			});
-			
+
 		}
 	});
 

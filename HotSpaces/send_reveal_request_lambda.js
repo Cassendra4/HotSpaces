@@ -29,7 +29,9 @@ exports.handler = function (event, context, callback) {
 			}
 			ddb.query({
 				TableName: 'hs_device_tokens',
-				ExpressionAttributeValues: { ':username': event.queryStringParameters.match_username },
+				ExpressionAttributeValues: {
+					':username': event.queryStringParameters.match_username
+				},
 				KeyConditionExpression: 'username = :username'
 			}, function (err, data) {
 				if (err) {
@@ -57,7 +59,7 @@ exports.handler = function (event, context, callback) {
 										callback(err, null);
 									})
 									.catch(err => {
-									 let response = {
+										let response = {
 											"statusCode": 200,
 											"headers": {
 												"my_header": "my_value"
@@ -65,7 +67,7 @@ exports.handler = function (event, context, callback) {
 											"body": JSON.stringify(data),
 											"isBase64Encoded": false
 										};
-											callback(null, response);
+										callback(null, response);
 									});
 
 							});
