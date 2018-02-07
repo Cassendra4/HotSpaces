@@ -1,6 +1,7 @@
 let AWS = require('aws-sdk');
 const ddb = new AWS.DynamoDB.DocumentClient();
 exports.handler = function (event, context, callback) {
+	console.log(event);
 	var currentTimestamp = new Date();
 	var username = JSON.parse(event.body).username;
 	var email = JSON.parse(event.body).email;
@@ -30,6 +31,8 @@ exports.handler = function (event, context, callback) {
 			'contact_number': contactNumber
 		}
 	}, function (err, data) {
+		console.log('err',err);
+		console.log('data',data);
 		if (err) {
 			callback(err, null);
 		} else {
@@ -44,6 +47,8 @@ exports.handler = function (event, context, callback) {
 					'last_known_long': long
 				}
 			}, function (err, data) {
+				console.log('err',err);
+		console.log('data',data);
 				if (err) {
 					callback(err, null);
 				} else {
