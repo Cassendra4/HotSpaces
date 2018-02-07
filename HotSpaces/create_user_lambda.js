@@ -13,7 +13,7 @@ exports.handler = function (event, context, callback) {
 	var userAvatar = JSON.parse(event.body).user_avatar;
 	var contactNumber = JSON.parse(event.body).contact_number;
 	var lat = JSON.parse(event.body).last_known_lat;
-	var long = JSON.parse(event.body).last_known_long; 
+	var long = JSON.parse(event.body).last_known_long;
 	var currentTime = currentTimestamp.toLocaleString();
 	ddb.put({
 		TableName: 'hs_user',
